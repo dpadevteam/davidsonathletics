@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+        <title>Contact Us - Davidson Athletics</title>
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="icon" href="/images/logo1_white.svg" type="image/svg+xml">
+        <link rel="stylesheet" type="text/css" href="./main.css">
+        <link rel="stylesheet" type="text/css" href="./contact.css">
+        <link rel="stylesheet" type="text/css" href="./override.css">
+    </head>
+    <body>
+        <header>
+            <nav class="primary-nav">
+                <div class="left-logo">
+                    <a href="home.html">
+                        <img src="./images/logo1_white.svg" alt="Davidson Athletics logo" />
+                        <div class="logo-text">
+                            <div>DAVIDSON</div>
+                            <div>ATHLETICS</div>
+                        </div>
+                    </a>
+                </div>
+                <ul>
+                    <li><a href="home.html"><img src="./images/icons/home_exterior.png" alt="Home icon" /><span>Home</span></a></li>
+                    <li>
+                        <a href="designs.html"><img src="./images/icons/t_shirt_hanger.png" alt="Designs icon" /><span>Designs</span></a>
+                        <div class="dropdown-content">
+                            <div>
+                                <a href="sportswear.html">Sportswear</a>
+                                <!-- <div><a>Men's Sportswear</a></div>
+                                <div><a>Women's Sportswear</a></div> -->
+                            </div>
+                            <div>
+                                <a href="uniforms.html">Uniforms</a>
+                            </div>
+                            <div>
+                                <a href="themed.html">Themed Outfits</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="about.html"><img src="./images/icons/about_people.png" alt="About Us icon" /><span>About Us</span></a></li>
+                    <li><a href="#"><img src="./images/icons/man_on_phone.png" alt="Contact Us icon" /><span>Contact Us</span></a></li>
+                </ul>
+            </nav>
+        </header>
+        <article>
+            <div class="header-text main-header-text">Contact Us</div>
+            <div style="padding: 100px 10%; text-align: center;">For any inquiries, comments, or feedback, please leave us a message through our socials or through the form below:</div>
+            <div id="faq">
+                <div>
+                    <div>Name</div>
+                    <div><input type="text" id="contact_name" placeholder="Enter your name..."></div>
+                    <div>Contact Number</div>
+                    <div><input type="text" id="contact_number" placeholder="Enter your contact number..."></div>
+                    <div>Email Address</div>
+                    <div><input type="email" id="contact_email" placeholder="Enter your email address..."></div>
+                    <button id="submit_button">Submit</button>
+                </div>
+                <div>
+                    <div>Message</div>
+                    <textarea id="contact_message" placeholder="Enter your message..." rows="5" cols="50"></textarea>
+                </div>
+            </div>
+            <script src="https://smtpjs.com/v3/smtp.js"></script>
+            <script type="text/javascript">
+                function fragmentFromString(strHTML) {
+                    return document.createRange().createContextualFragment(strHTML);
+                }
+        
+                document.querySelector("#contact_name").value = (localStorage.getItem("contact_name") || "");
+                document.querySelector("#contact_number").value = (localStorage.getItem("contact_number") || "");
+                document.querySelector("#contact_email").value = (localStorage.getItem("contact_email") || "");
+                document.querySelector("#contact_message").value = (localStorage.getItem("contact_message") || "");
+        
+                for (let contact_detail of document.querySelectorAll("#faq input, #faq textarea")) {
+                    contact_detail.addEventListener("input", function() {
+                        localStorage.setItem("contact_name", document.querySelector("#contact_name").value);
+                        localStorage.setItem("contact_number", document.querySelector("#contact_number").value);
+                        localStorage.setItem("contact_email", document.querySelector("#contact_email").value);
+                        localStorage.setItem("contact_message", document.querySelector("#contact_message").value);
+                    })
+                }
+        
+                document.querySelector("#submit_button").addEventListener("click", function() {
+                    if (window.navigator.onLine) {
+                        try {
+                                Email.send({
+                                SecureToken: "b0ff8c0b-5842-402c-9da0-6558d30d4a4b",
+                                To : 'tedu.demircan.swu@phinmaed.com',
+                                From : "tedu.demircan.swu@phinmaed.com",
+                                Subject : "Contact Form Inquiry",
+                                Body : "Name: " + document.querySelector("#contact_name").value + "<br>Contact Number: " + document.querySelector("#contact_number").value + "<br>Email Address: " + document.querySelector("#contact_email").value + "<br>Message: " + document.querySelector("#contact_message").value
+                            }).then(
+                                message => {
+                                    modalCallback(message);
+                                }
+                            );
+                        }
+                        catch (e) {
+                            modalCallback("The message has not been sent due to an error. Please refresh the page and try again.")
+                        }
+                    }
+                    else {
+                        modalCallback("You are currently offline. Please connect to the Internet to send this message.")
+                    }
+        
+                    function modalCallback(message) {
+                        let message_ok = ["Success", "Your message has been successfully delivered!", "./images/icons/checkmark-outline-sharp.svg"];
+                        let message_error = ["Oh no!", message, "./images/icons/alert-circle.svg"];
+                        let success_message = ["", "", ""];
+        
+                        if (document.querySelector("#contact_email").value != "" && document.querySelector("#contact_email").validity.valid) {
+                            message_ok[1] = "Your message has been successfully delivered!<br>We will get back to you within 1-3 business days."
+                        }
+        
+                        let modal = document.createElement("div");
+                        modal.id = "modal";
+                        
+                        if (message == "OK") {
+                            success_message = message_ok
+                        }
+                        else {
+                            success_message = message_error
+                        }
+        
+                        modal.innerHTML = '<div><img src="' + success_message[2] + '"><h1>' + success_message[0] + '</h1><p>' + success_message[1] + '</p><button id="modal_close_button">Close</button></div>'
+                        
+                        document.querySelector("#faq").insertAdjacentElement("afterend", modal);
+        
+                        document.querySelector("#modal_close_button").addEventListener("click", function() {
+                            modal.remove();
+                        })
+                    }
+                })
+            </script>
+            <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+            <div class="elfsight-app-5a6163f3-e9e6-49f3-8830-f3a12503b558" data-elfsight-app-lazy></div>
+        </article>
+        <footer>
+            <div id="footer1">
+                <b>Quick Links</b>
+                <div>
+                    <div><a href="home.html">Home</a></div>
+                    <div><a href="about.html">About Us</a></div>
+                    <div><a href="about.html#faq-header">FAQ<span style="font-size: 1em; font-variant: all-small-caps;">s<span></a></div>
+                    <div><a href="contact.html">Contact Us</a></div>
+                </div>
+            </div>
+            <div id="footer2">
+                <b><a href="designs.html">Designs</a></b>
+                <div>
+                    <div><a href="sportswear.html">Sportswear</a></div>
+                    <!-- <div style="text-indent: 1em;">Basketball</div> -->
+                    <div><a href="uniforms.html">Uniforms</a></div>
+                    <div><a href="themed.html">Themed Outfits</a></div>
+                </div>
+            </div>
+            <div id="footer3">
+                <b>Get in Touch:</b>
+                <div>
+                   <span>Sitio Ubos,</span> <spam>Poblacion,</spam>
+                    <br>
+                    <span>Brgy. Poblacion,</span> <span>Cebu City</span>
+                    <br>
+                    <span>Philippines, PH 6000</span>
+                    <br><br>
+                    <a href="tel:+639959125513">(+63) 995 912 5513</a>
+                </div>
+            </div>
+            <div id="footer4">Copyright &copy; 2024 Davidson Athletics.</div><!-- Copyright © 2024 Davidson Athletics. -->
+            <div id="footer5">
+                <a href="https://www.facebook.com/people/Davidson-Athletics/100092036303268/"><img src="./images/icons/Facebook_Logo_Secondary.svg"></a>
+                <a href="https://www.facebook.com/messages/t/100623169694339"><img src="./images/icons/M_logo_White.svg"></a>
+                <a href="mailto:baguiojustine69@gmail.com"><img src="./images/icons/mail-outline.svg"></a>
+                <a href="tel:+639959125513"><img src="./images/icons/call-outline.svg"></a>
+            </div>
+        </footer>
+    </body>
+</html>

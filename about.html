@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+        <title>About Us - Davidson Athletics</title>
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="icon" href="/images/logo1_white.svg" type="image/svg+xml">
+        <link rel="stylesheet" type="text/css" href="./main.css">
+        <link rel="stylesheet" type="text/css" href="./about.css">
+        <link rel="stylesheet" type="text/css" href="./override.css">
+    </head>
+    <body>
+        <header>
+            <nav class="primary-nav">
+                <div class="left-logo">
+                    <a href="home.html">
+                        <img src="./images/logo1_white.svg" alt="Davidson Athletics logo" />
+                        <div class="logo-text">
+                            <div>DAVIDSON</div>
+                            <div>ATHLETICS</div>
+                        </div>
+                    </a>
+                </div>
+                <ul>
+                    <li><a href="home.html"><img src="./images/icons/home_exterior.png" alt="Home icon" /><span>Home</span></a></li>
+                    <li>
+                        <a href="designs.html"><img src="./images/icons/t_shirt_hanger.png" alt="Designs icon" /><span>Designs</span></a>
+                        <div class="dropdown-content">
+                            <div>
+                                <a href="sportswear.html">Sportswear</a>
+                                <!-- <div><a>Men's Sportswear</a></div>
+                                <div><a>Women's Sportswear</a></div> -->
+                            </div>
+                            <div>
+                                <a href="uniforms.html">Uniforms</a>
+                            </div>
+                            <div>
+                                <a href="themed.html">Themed Outfits</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="./images/icons/about_people.png" alt="About Us icon" /><span>About Us</span></a></li>
+                    <li><a href="contact.html"><img src="./images/icons/man_on_phone.png" alt="Contact Us icon" /><span>Contact Us</span></a></li>
+                </ul>
+            </nav>
+        </header>
+        <article>
+            <div class="header-text main-header-text">About Us</div>
+            <div class="side-by-side">
+                <div>
+                    <div>Davidson Athletics is a clothing manufacturer and retailer, specializing in the sportswear market, offering both ready-to-wear and custom-made sublimation clothing products, including but not limited to, sportswear, uniforms, and themed outfits.</div>
+                    <div><img src="./images/logo1.svg" alt="Davidson Athletics logo"></div>
+                </div>
+                <div>
+                    <div>We are located in Sitio Ubos, Poblacion, Barangay Poblacion, Cebu City, Philippines, PH 6000.</div>
+                    <div>
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="faq-header" class="header-text">Frequently Asked Questions (FAQs)</div>
+            <div id="faq">
+                <div>Q: Do you create clothing designs?</div>
+                <div>A: Yes, we can create designs based on your needs, but if you have your own designs, we accept them as well.</div>
+                <div>Q: What types of fabric do you use?</div>
+                <div>A: We use Polydex, a synthetic fabric composed of polyester and Dextron nylon. Polydex is smooth, lightweight, absorbent, quick-drying, and resistant to abrasion, making it ideal for creating high-quality sportswear.</div>
+                <div>Q: How long would it take?</div>
+                <div>A: Our custom-made bundles would be completed and ready to ship within one to two weeks.</div>
+                <div>Q: What are the payment methods available?</div>
+                <div>A: We accept credit cards, bank transfer, and GCash.</div>
+            </div>
+            <script type="text/javascript">
+                if (!window.navigator.onLine) {
+                    document.querySelector("div#map").outerHTML = '<img id="map_fallback" src="./images/map_fallback.png">'
+                }
+                else {
+                    document.querySelector("div#map").outerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d981.5323917955718!2d123.94646755674093!3d10.25113269930073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTDCsDE1JzAzLjIiTiAxMjPCsDU2JzQ5LjIiRQ!5e0!3m2!1sen!2sph!4v1712964271348!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+                }
+            </script>
+            <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+            <div class="elfsight-app-5a6163f3-e9e6-49f3-8830-f3a12503b558" data-elfsight-app-lazy></div>
+        </article>
+        <footer>
+            <div id="footer1">
+                <b>Quick Links</b>
+                <div>
+                    <div><a href="home.html">Home</a></div>
+                    <div><a href="about.html">About Us</a></div>
+                    <div><a href="about.html#faq-header">FAQ<span style="font-size: 1em; font-variant: all-small-caps;">s<span></a></div>
+                    <div><a href="contact.html">Contact Us</a></div>
+                </div>
+            </div>
+            <div id="footer2">
+                <b><a href="designs.html">Designs</a></b>
+                <div>
+                    <div><a href="sportswear.html">Sportswear</a></div>
+                    <!-- <div style="text-indent: 1em;">Basketball</div> -->
+                    <div><a href="uniforms.html">Uniforms</a></div>
+                    <div><a href="themed.html">Themed Outfits</a></div>
+                </div>
+            </div>
+            <div id="footer3">
+                <b>Get in Touch:</b>
+                <div>
+                   <span>Sitio Ubos,</span> <spam>Poblacion,</spam>
+                    <br>
+                    <span>Brgy. Poblacion,</span> <span>Cebu City</span>
+                    <br>
+                    <span>Philippines, PH 6000</span>
+                    <br><br>
+                    <a href="tel:+639959125513">(+63) 995 912 5513</a>
+                </div>
+            </div>
+            <div id="footer4">Copyright &copy; 2024 Davidson Athletics.</div><!-- Copyright © 2024 Davidson Athletics. -->
+            <div id="footer5">
+                <a href="https://www.facebook.com/people/Davidson-Athletics/100092036303268/"><img src="./images/icons/Facebook_Logo_Secondary.svg"></a>
+                <a href="https://www.facebook.com/messages/t/100623169694339"><img src="./images/icons/M_logo_White.svg"></a>
+                <a href="mailto:baguiojustine69@gmail.com"><img src="./images/icons/mail-outline.svg"></a>
+                <a href="tel:+639959125513"><img src="./images/icons/call-outline.svg"></a>
+            </div>
+        </footer>
+    </body>
+</html>

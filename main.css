@@ -1,0 +1,268 @@
+/* Font declarations  */
+
+@font-face {
+    font-family: "Karantina";
+    font-display: block;
+    src:
+        local("Karantina"),
+        local("Karantina-Regular"),
+        url(./fonts/Karantina-Regular.ttf),
+        url(https://fonts.gstatic.com/s/karantina/v11/buE0po24ccnh31GVMAB59wo6.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: "Teko";
+    font-display: block;
+    src:
+        local("Teko"),
+        local("Teko-Regular"),
+        url(./fonts/Teko-Regular.ttf),
+        url(https://fonts.gstatic.com/s/teko/v20/LYjYdG7kmE0gV69VVPPdFl06VN8XG4S11zM.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: "Roboto Slab";
+    font-display: block;
+    font-weight: 400;
+    src:
+        local("Roboto Slab"),
+        local("RobotoSlab-Regular"),
+        url(./fonts/RobotoSlab-Regular.ttf),
+        url(https://fonts.gstatic.com/s/robotoslab/v34/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjojISmb2Rj.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: "Roboto Slab";
+    font-display: block;
+    font-weight: 700;
+    src:
+        local("Roboto Slab Bold"),
+        local("RobotoSlab-Bold"),
+        url(./fonts/RobotoSlab-Bold.ttf),
+        url(https://fonts.gstatic.com/s/robotoslab/v34/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjoa4Omb2Rj.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: "Roboto Slab";
+    font-display: block;
+    font-weight: 900;
+    src:
+        local("Roboto Slab Black"),
+        local("RobotoSlab-Black"),
+        url(./fonts/RobotoSlab-Black.ttf),
+        url(https://fonts.gstatic.com/s/robotoslab/v34/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjoJYOmb2Rj.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: "Varsity";
+    font-display: block;
+    src:
+        local("Varsity"),
+        local("Varsity-Regular"),
+        local("Varsity Regular"),
+        url(./fonts/varsity_regular.ttf),
+}
+
+@font-face {
+    font-family: "Varsity";
+    font-display: block;
+    src:
+        local("Varsity"),
+        local("Varsity-Regular"),
+        local("Varsity Regular"),
+        url(./fonts/varsity_regular.ttf),
+}
+
+@font-face {
+    font-family: "Freshman";
+    font-display: block;
+    src:
+        local("Freshman"),
+        local("Freshman-Regular"),
+        local("Freshman Regular"),
+        url(./fonts/Freshman.ttf),
+}
+
+@font-face {
+    font-family: "College";
+    font-display: block;
+    font-weight: 400;
+    src:
+        local("College"),
+        local("College"),
+        url(./fonts/College.ttf),
+}
+@font-face {
+    font-family: "College";
+    font-display: block;
+    font-weight: 700;
+    src:
+        local("College Bold"),
+        local("College"),
+        url(./fonts/CollegeBold.ttf),
+}
+@font-face {
+    font-family: "College";
+    font-display: block;
+    font-weight: 700;
+    src:
+        local("College Bold"),
+        local("College"),
+        url(./fonts/CollegeBold.ttf),
+}
+
+/* General styles */
+
+* {
+    font-family: "Roboto Slab", "Roboto", Arial, sans-serif;
+    color: white;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    height: -webkit-fill-available;
+    
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    background: linear-gradient(180deg, #000000 0%, rgba(255, 255, 255, 0) 0.01%, rgba(98, 98, 98, 0.613875) 65%, rgba(14, 14, 14, 0.944474) 100%), url(./images/logo1.svg), #242424;
+    background-size: cover;
+    background-attachement: fixed;
+}
+
+a:-webkit-any-link {
+    color: unset;
+    text-decoration: none;
+}
+a:-moz-any-link > underline {
+    color: unset;
+    text-decoration-line: none;
+}
+
+/* Primary navigation */
+
+nav.primary-nav {
+    padding: 20px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 24px;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%);
+}
+nav.primary-nav > div.left-logo > a {
+    display: flex;
+    padding-right: 20px;
+    border-right: medium solid white;
+    align-items: center;
+}
+nav.primary-nav > div.left-logo > a > img {
+    height: min(120px, calc(1.25 * 15vw));
+    width: min(120px, calc(1.25 * 15vw));
+    max-height: 120px;
+    max-width: 120px;
+    filter: brightness(0) invert(1);
+    margin-right: 20px;
+}
+nav.primary-nav > div.left-logo > a * {
+    font-family: "Karantina", sans-serif;
+    line-height: 0.8;
+    text-align: right;
+}
+nav.primary-nav > div.left-logo > a > div.logo-text > div:nth-child(1) {
+    font-size: min(96px, 15vw);
+}
+nav.primary-nav > div.left-logo > a > div.logo-text > div:nth-child(2) {
+    font-size: min(45px, calc(0.46875 * 15vw)); /* 45/96 */
+}
+nav.primary-nav > ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    gap: 25px;
+}
+nav.primary-nav > ul > li {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+nav.primary-nav > ul > li > a {
+    display: flex;
+    font-family: "Karantina", "Roboto Slab", sans-serif;
+    font-size: 45px;
+    padding: 14px 16px;
+    align-items: center;
+    transform: scale(1);
+    background: transparent;
+    transition: transform 0.2s ease-out, background 0.2s ease-out;
+}
+nav.primary-nav > ul > li > a:hover {
+    transform: scale(1.1);
+    background: #9d9d9d26;
+    transition: transform 0.2s ease-out, background 0.2s ease-out;
+}
+nav.primary-nav > ul > li > a:active {
+    transform: scale(0.9);
+    transition: transform 0.2s ease-out,
+}
+nav.primary-nav > ul > li > a > span {
+    font-family: "College", "Karantina", "Roboto Slab", sans-serif;
+    font-size: 45px;
+    word-spacing: -10px;
+    font-variant: small-caps;
+}
+@media screen and (max-width: 955px) {
+    nav.primary-nav {
+        flex-direction: column;
+    }
+    /*nav.primary-nav > ul > li > a > span {
+        display: none;
+    }*/
+    nav.primary-nav > div.left-logo > a {
+        border-right: unset;
+    }
+}
+@media screen and (max-width: 1500px) {
+    nav.primary-nav > ul > li > a > span {
+        display: none;
+    }
+}
+nav.primary-nav > ul > li > a > img {
+    margin-right: 10px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 128px; /* 120px;*/
+}
+.primary-nav li:hover {
+    background: rgb(30,30,30,0.3);
+}
+.primary-nav li:hover .dropdown-content {
+    /* display: flex;
+    flex-direction: column;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+    background: rgb(252,252,252, 0.5);
+    color: black;
+    gap: 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.primary-nav li:hover .dropdown-content > div {
+    color: black;
+    line-height: 1.2;
+}
+.primary-nav li:hover .dropdown-content > div > div {
+    text-indent: 20px;
+    font-size: 16px;
+}
+.primary-nav li:hover .dropdown-content * {
+    font-family: "College";
+ }

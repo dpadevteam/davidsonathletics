@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+        <title>Design - Davidson Athletics</title>
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="icon" href="/images/logo1_white.svg" type="image/svg+xml">
+        <link rel="stylesheet" type="text/css" href="./main.css">
+        <link rel="stylesheet" type="text/css" href="./design.css">
+        <link rel="stylesheet" type="text/css" href="./override.css">
+    </head>
+    <body>
+        <header>
+            <nav class="primary-nav">
+                <div class="left-logo">
+                    <a href="home.html">
+                        <img src="./images/logo1_white.svg" alt="Davidson Athletics logo" />
+                        <div class="logo-text">
+                            <div>DAVIDSON</div>
+                            <div>ATHLETICS</div>
+                        </div>
+                    </a>
+                </div>
+                <ul>
+                    <li><a href="home.html"><img src="./images/icons/home_exterior.png" alt="Home icon" /><span>Home</span></a></li>
+                    <li>
+                        <a href="designs.html"><img src="./images/icons/t_shirt_hanger.png" alt="Designs icon" /><span>Designs</span></a>
+                        <div class="dropdown-content">
+                            <div>
+                                <a href="sportswear.html">Sportswear</a>
+                                <!-- <div><a>Men's Sportswear</a></div>
+                                <div><a>Women's Sportswear</a></div> -->
+                            </div>
+                            <div>
+                                <a href="uniforms.html">Uniforms</a>
+                            </div>
+                            <div>
+                                <a href="themed.html">Themed Outfits</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="about.html"><img src="./images/icons/about_people.png" alt="About Us icon" /><span>About Us</span></a></li>
+                    <li><a href="contact.html"><img src="./images/icons/man_on_phone.png" alt="Contact Us icon" /><span>Contact Us</span></a></li>
+                </ul>
+            </nav>
+        </header>
+        <article>
+            <div class="main_container">
+                <div class="back_container">
+                    <img src="./images/icons/arrow-back-outline.svg">
+                    <p>Back</p>
+                </div>
+                <div class="product_container">
+                    <div class="product_image">
+                        <img src="./images/assets/gray_banner_javate.png">
+                    </div>
+                    <div class="product_info">
+                        <h1>BATCH '13 SAMPLE DESIGN</h1>
+                        <p>A full sublimation sports wear made from top quality material.</p>
+                        <p class="price">&#x20B1; 300.00</p>
+                        <div class="filters">
+                            <p>Sportswear</p>
+                            <p> | </p>
+                            <p>Tanktop</p>
+                            <p> | </p>
+                            <p>Unisex</p>
+                            <p> | </p>
+                            <p class="sold-out">Sold Out</p>
+                        </div>
+                        <div class="sizes">
+                            <div>XS</div>
+                            <div>S</div>
+                            <div>M</div>
+                            <div>L</div>
+                            <div>XL</div>
+                            <div>XXL</div>
+                            <div>Custom</div>
+                        </div>
+                        <div></div>
+                        <div class="order_button">Order Now</div>
+                    </div>
+                </div>
+                <div class="related">
+                    <h1>More Designs</h1>
+                    <div></div>
+                </div>
+                <div id="modal"></div>
+            </div>
+            <script src="./items.js"></script>
+            <script type="text/javascript">
+                
+        
+                let categories = {
+                    "sportswear": "Sportswear",
+                    "uniforms": "Uniforms",
+                    "themed": "Themed Outfits"
+                }
+                let types = {
+                    "shirts": "Shirts",
+                    "tanktops": "Tanktops",
+                    "shorts": "Shorts",
+                    "pants": "Pants",
+                    "hoodies": "Hoodies",
+                    "combo": "Combo",
+                }
+        
+                let genders = {
+                    "male": "Men's",
+                    "female": "Women's",
+                    "unisex": "Unisex"
+                }
+        
+                
+                function displayItem() {
+                    let item_name = new URLSearchParams(window.location.search).get('item')
+                    document.title = item_name + " - Davidson Athletics"
+                    let found = false;
+                    for (let item of items) {
+                        if (item["item_name"] == item_name) {
+                            document.querySelector(".product_info > h1").innerText = item["item_name"]
+                            document.querySelector(".product_image > img").src = "./images/assets/" + item["img_src"]
+                            document.querySelector(".product_info > p.price").innerHTML = "&#x20B1; " + item["price"] + ".00"
+                            document.querySelector(".product_info > div.filters").innerHTML = "<p>" + categories[item["category"]] + "</p><p> | </p><p>" + types[item["type"]] +  "</p><p> | </p><p>" + genders[item["gender"]] + "</p>"
+        
+                            console.log(item["stock"])
+        
+                            if (item["stock"] == 0) {
+                                document.querySelector(".product_info > div.filters").innerHTML += '<p> | </p><p class="sold-out">Sold Out</p>'
+                            }
+        
+                            document.querySelector(".product_image").addEventListener("click", function() {
+                                document.querySelector("#modal").style.display ="flex";
+                                document.querySelector("#modal").innerHTML = '<div class="back_container"><img src="./images/icons/arrow-back-outline.svg"></div><img src="./images/assets/' + item["img_src"] + '">'
+                            })
+                            document.querySelector("#modal").addEventListener("click", function() {
+                                document.querySelector("#modal").style.display ="none";
+                            })
+        
+                            let max_items = 5;
+                            let temp_arr = []
+        
+                            document.querySelector(".related > div").innerHTML = "";
+        
+                            while (temp_arr.length < max_items) {
+                                let related_item = items[Math.floor(Math.random() * items.length)];
+                                if (related_item != item && !temp_arr.includes(related_item)) {
+                                    temp_arr.push(related_item)
+                                    // document.querySelector(".related > div").innerHTML += '<a href="./design.html?item=' + related_item["item_name"] + '&from=' + new URLSearchParams(window.location.search).get('from') + '"><div><img src="./images/assets/' + related_item["img_src"] + '"></div></a>'
+        
+                                    let related_item_link = document.createElement("a");
+                                    related_item_link.href = "";
+                                    related_item_link.innerHTML = '<div><img src="./images/assets/' + related_item["img_src"] + '"></div>'
+                                    document.querySelector(".related > div").append(related_item_link)
+        
+                                    // document.querySelector(".related > div").innerHTML += '<a href="#"><div><img src="./images/assets/' + related_item["img_src"] + '"></div></a>'
+                                    related_item_link.addEventListener('click', function(e) {
+                                        e.preventDefault();
+                                        document.querySelector(".product_image > img").style.opacity = "0";
+                                        document.querySelector(".product_image > img").style.transition = "0.2s opacity ease-out";
+                                        document.querySelector(".product_image > img").src = related_item_link.querySelector("img").src
+        
+                                        setTimeout(function() {
+                                            document.querySelector(".product_image > img").style.opacity = "1";
+                                        }, 300)
+        
+                                        const url = new URL(window.location);
+                                        url.searchParams.set("item", related_item["item_name"]);
+        
+                                        window.history.pushState({}, "", url);
+                                        displayItem();
+                                    })
+                                }
+                            }
+        
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found == false) {
+                        document.querySelector(".product_container").innerHTML = '<div class="not-found"><p style="text-align: center;">The item you requested is not found. Please revise your search parameters.</p></div>'
+                    }
+                }
+        
+                displayItem();
+        
+        
+        
+                document.querySelector(".back_container").addEventListener("click", function() {
+                    let page_name = (new URLSearchParams(window.location.search).get('from') || "designs")
+                    if (!["designs", "sportswear", "uniforms", "themed"].includes(page_name)) {
+                        page_name = "designs"
+                    }
+                    window.location.href = "./" + page_name + ".html"
+                })
+                document.querySelector(".order_button").addEventListener("click", function() {
+                    document.querySelector("#__EAAPS_PORTAL > div > div > button").dispatchEvent(new Event('click', {'bubbles': true}));
+                });
+            </script>
+            <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+            <div class="elfsight-app-5a6163f3-e9e6-49f3-8830-f3a12503b558" data-elfsight-app-lazy></div>
+        </article>
+        <footer>
+            <div id="footer1">
+                <b>Quick Links</b>
+                <div>
+                    <div><a href="home.html">Home</a></div>
+                    <div><a href="about.html">About Us</a></div>
+                    <div><a href="about.html#faq-header">FAQ<span style="font-size: 1em; font-variant: all-small-caps;">s<span></a></div>
+                    <div><a href="contact.html">Contact Us</a></div>
+                </div>
+            </div>
+            <div id="footer2">
+                <b><a href="designs.html">Designs</a></b>
+                <div>
+                    <div><a href="sportswear.html">Sportswear</a></div>
+                    <!-- <div style="text-indent: 1em;">Basketball</div> -->
+                    <div><a href="uniforms.html">Uniforms</a></div>
+                    <div><a href="themed.html">Themed Outfits</a></div>
+                </div>
+            </div>
+            <div id="footer3">
+                <b>Get in Touch:</b>
+                <div>
+                   <span>Sitio Ubos,</span> <spam>Poblacion,</spam>
+                    <br>
+                    <span>Brgy. Poblacion,</span> <span>Cebu City</span>
+                    <br>
+                    <span>Philippines, PH 6000</span>
+                    <br><br>
+                    <a href="tel:+639959125513">(+63) 995 912 5513</a>
+                </div>
+            </div>
+            <div id="footer4">Copyright &copy; 2024 Davidson Athletics.</div><!-- Copyright © 2024 Davidson Athletics. -->
+            <div id="footer5">
+                <a href="https://www.facebook.com/people/Davidson-Athletics/100092036303268/"><img src="./images/icons/Facebook_Logo_Secondary.svg"></a>
+                <a href="https://www.facebook.com/messages/t/100623169694339"><img src="./images/icons/M_logo_White.svg"></a>
+                <a href="mailto:baguiojustine69@gmail.com"><img src="./images/icons/mail-outline.svg"></a>
+                <a href="tel:+639959125513"><img src="./images/icons/call-outline.svg"></a>
+            </div>
+        </footer>
+    </body>
+</html>

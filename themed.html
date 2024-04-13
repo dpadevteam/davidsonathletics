@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+        <title>Themed Outfits - Davidson Athletics</title>
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="icon" href="/images/logo1_white.svg" type="image/svg+xml">
+        <link rel="stylesheet" type="text/css" href="./main.css">
+        <link rel="stylesheet" type="text/css" href="./designs.css">
+        <link rel="stylesheet" type="text/css" href="./override.css">
+    </head>
+    <body>
+        <header>
+            <nav class="primary-nav">
+                <div class="left-logo">
+                    <a href="home.html">
+                        <img src="./images/logo1_white.svg" alt="Davidson Athletics logo" />
+                        <div class="logo-text">
+                            <div>DAVIDSON</div>
+                            <div>ATHLETICS</div>
+                        </div>
+                    </a>
+                </div>
+                <ul>
+                    <li><a href="home.html"><img src="./images/icons/home_exterior.png" alt="Home icon" /><span>Home</span></a></li>
+                    <li>
+                        <a href="designs.html"><img src="./images/icons/t_shirt_hanger.png" alt="Designs icon" /><span>Designs</span></a>
+                        <div class="dropdown-content">
+                            <div>
+                                <a href="sportswear.html">Sportswear</a>
+                                <!-- <div><a>Men's Sportswear</a></div>
+                                <div><a>Women's Sportswear</a></div> -->
+                            </div>
+                            <div>
+                                <a href="uniforms.html">Uniforms</a>
+                            </div>
+                            <div>
+                                <a href="#">Themed Outfits</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="about.html"><img src="./images/icons/about_people.png" alt="About Us icon" /><span>About Us</span></a></li>
+                    <li><a href="contact.html"><img src="./images/icons/man_on_phone.png" alt="Contact Us icon" /><span>Contact Us</span></a></li>
+                </ul>
+            </nav>
+        </header>
+        <article>
+            <div class="header-text main-header-text">Themed Outfits</div>
+            <div class="filters">
+                <div tabindex="0">
+                    SORT
+                    <img src="./images/icons/expand_arrow.png" alt="Expand" />
+                    <div class="filter-dropdown-content" data-filter-type="sort">
+                        <div tabindex="0">Name</div>
+                        <div tabindex="0">Price</div>
+                        <div tabindex="0">Stock</div>
+                    </div>
+                </div>
+                <div tabindex="0">
+                    GENDER
+                    <img src="./images/icons/expand_arrow.png" alt="Expand" />
+                    <div class="filter-dropdown-content" data-filter-type="gender">
+                        <div tabindex="0">Male</div>
+                        <div tabindex="0">Female</div>
+                        <div tabindex="0">Unisex</div>
+                    </div>
+                </div>
+                <div tabindex="0">
+                    TYPE
+                    <img src="./images/icons/expand_arrow.png" alt="Expand" />
+                    <div class="filter-dropdown-content" data-filter-type="type">
+                        <div tabindex="0">Shirts</div>
+                        <div tabindex="0">Tanktops</div>
+                        <div tabindex="0">Shorts</div>
+                        <div tabindex="0">Pants</div>
+                        <div tabindex="0">Hoodies</div>
+                        <div tabindex="0">Combo</div>
+                    </div>
+                </div>
+                <div><input type="text" name="search" id="search" placeholder="Search designs..." /></div>
+            </div>
+            <div class="category-cards">
+                <div class="category-card-items">
+                    
+                </div>
+            </div>
+            <script src="./items.js"></script>
+            <script type="text/javascript">
+                let category_card_items = document.querySelector(".category-card-items")
+        
+                let page_category = 'themed';
+                    
+                for (const item of items) {
+                    if (page_category == item["category"] || page_category == "all") {
+                        let category_card_item = document.createElement("div")
+                        let category_card_item_a = document.createElement("a")
+                        let category_card_item_img = document.createElement("img")
+                        let category_card_item_text = document.createElement("div")
+        
+        
+                        category_card_item.classList.add("category-card-item")
+                        category_card_item_text.classList.add("category-card-item-text")
+        
+                        category_card_item_img.src = "./images/assets/" + item["img_src"]
+                        category_card_item_img.alt = item["alt"] || ""
+        
+                        // category_card_item_img.height = "auto" // "185"
+                        // category_card_item_img.width = "auto" // "200"
+        
+                        category_card_item.dataset.gender = item["gender"]
+                        category_card_item.dataset.type = item["type"]
+                        category_card_item.dataset.price = item["price"]
+                        category_card_item.dataset.stock = item["stock"]
+        
+                        if (item["stock"] == 0) {
+                            let badge = document.createElement("div")
+                            badge.classList.add("sold-out-badge")
+                            badge.innerText = "Sold Out";
+                            category_card_item.append(badge)
+                        }
+        
+        
+        
+                        category_card_item_text.innerText = item["item_name"]
+        
+                        category_card_item.append(category_card_item_img)
+                        category_card_item.append(category_card_item_text)
+        
+                        category_card_item_a.href = "design.html?item=" + item["item_name"] + "&from=" + 'themed'
+        
+                        category_card_item_a.append(category_card_item)
+        
+                        category_card_items.append(category_card_item_a)
+        
+                        category_card_item.addEventListener("click", function() {
+                            console.log("clicked")
+                        })
+                    }
+                }
+        
+                function filter_booleans() {
+                    for (const filter_button of document.querySelectorAll(".filters > div:not(:first-child) > .filter-dropdown-content > div")) {
+                        filter_button.onclick = function() {
+                            if (!(filter_button.classList.contains("include") || filter_button.classList.contains("exclude"))) {
+                                filter_button.classList.add("include")
+                            }
+                            else if (filter_button.classList.contains("include")) {
+                                filter_button.classList.remove("include")
+                                filter_button.classList.add("exclude")
+                            }
+                            else if (filter_button.classList.contains("exclude")) {
+                                filter_button.classList.remove("exclude")
+                                filters[filter_button.parentElement.dataset.filterType][filter_button.innerText.toLowerCase()] = true
+                            }
+        
+                            if ([...filter_button.parentElement.children].some(function(element) { return element.classList.contains("include") })) {
+                                for (let included_filters of filter_button.parentElement.children) {
+                                    if (!included_filters.classList.contains("include")) {
+                                        filters[included_filters.parentElement.dataset.filterType][included_filters.innerText.toLowerCase()] = false
+                                    }
+                                    else {
+                                        filters[included_filters.parentElement.dataset.filterType][included_filters.innerText.toLowerCase()] = true
+                                    }
+                                }
+                            }
+                            else {
+                                for (let included_filters of filter_button.parentElement.children) {
+                                    if (included_filters.classList.contains("exclude")) {
+                                        filters[included_filters.parentElement.dataset.filterType][included_filters.innerText.toLowerCase()] = false
+                                    }
+                                    else {
+                                        filters[included_filters.parentElement.dataset.filterType][included_filters.innerText.toLowerCase()] = true
+                                    }
+                                }
+                            }
+        
+                            for (const filtered_item of document.querySelectorAll(".category-card-item")) {
+                                let temp_filter = true
+                                for (const filter_data_item in filtered_item.dataset) {
+                                    if (!["price", "stock"].includes(filter_data_item) && filters[filter_data_item][filtered_item.dataset[filter_data_item]] == false){
+                                        temp_filter = false
+                                        break;
+                                    }
+                                }
+                                if (temp_filter == true) {
+                                    filtered_item.parentElement.classList.remove("hidden")
+                                }
+                                else {
+                                    filtered_item.parentElement.classList.add("hidden")
+                                }
+                            }
+                        }
+                     }
+                }
+        
+                for (const filter_button of document.querySelectorAll(".filters > div:first-child > .filter-dropdown-content > div")) {
+                    filter_button.addEventListener("click", function() {
+                        for (const filter_parents of filter_button.parentElement.children) {
+                            filter_parents.classList.remove("include")
+                        }
+                        filter_button.classList.add("include")
+        
+                        if (filter_button.innerText == "Name") {
+                            [...document.querySelector(".category-card-items").children]
+                                .sort(function(a, b) { return (a.children[0].children[1].innerText > b.children[0].children[1].innerText ? 1 : -1) }) // A to Z
+                                .forEach(node => document.querySelector(".category-card-items").appendChild(node));
+                        }
+                        else if (filter_button.innerText == "Price") {
+                            [...document.querySelector(".category-card-items").children]
+                                .sort(function(a, b) {
+                                    if (a.children[0].dataset.price < b.children[0].dataset.price) {
+                                        return 1;
+                                    }
+                                    else if (a.children[0].dataset.price == b.children[0].dataset.price && a.children[0].children[1].innerText > b.children[0].children[1].innerText) {
+                                        return 1;
+                                    }
+                                    else {
+                                        return -1;
+                                    }
+                                 }) // Greatest price to least price, then A-Z
+                                .forEach(node => document.querySelector(".category-card-items").appendChild(node));
+                        }
+                        else if (filter_button.innerText == "Stock") {
+                            [...document.querySelector(".category-card-items").children]
+                                .sort(function(a, b) { return (a.children[0].dataset.stock < b.children[0].dataset.stock ? 1 : -1) }) // Greatest to least
+                                .forEach(node => document.querySelector(".category-card-items").appendChild(node));
+                        }
+                        filter_booleans()
+                    })
+                }
+        
+                let search = document.querySelector("input#search")
+                search.addEventListener("input", function() {
+                    if (search.value == "") {
+                        for (const filtered_item of document.querySelectorAll(".category-card-item")) {
+                            filtered_item.parentElement.classList.remove("hidden")
+                        }
+                    }
+                    else {
+                        filter_booleans()
+                        for (const filtered_item of document.querySelectorAll(".category-card-item")) {
+                            if (filtered_item.innerText.toLowerCase().search(search.value.toLowerCase()) == -1) {
+                                filtered_item.parentElement.classList.add("hidden")
+                            }
+                            // else {
+                            //     filtered_item.parentElement.classList.remove("hidden")
+                            // }
+                        }
+                    }
+                    filter_booleans()
+                })
+        
+                
+        
+                filter_booleans()
+            </script>
+            <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+            <div class="elfsight-app-5a6163f3-e9e6-49f3-8830-f3a12503b558" data-elfsight-app-lazy></div>
+            
+        </article>
+        <footer>
+            <div id="footer1">
+                <b>Quick Links</b>
+                <div>
+                    <div><a href="home.html">Home</a></div>
+                    <div><a href="about.html">About Us</a></div>
+                    <div><a href="about.html#faq-header">FAQ<span style="font-size: 1em; font-variant: all-small-caps;">s<span></a></div>
+                    <div><a href="contact.html">Contact Us</a></div>
+                </div>
+            </div>
+            <div id="footer2">
+                <b><a href="designs.html">Designs</a></b>
+                <div>
+                    <div><a href="sportswear.html">Sportswear</a></div>
+                    <!-- <div style="text-indent: 1em;">Basketball</div> -->
+                    <div><a href="uniforms.html">Uniforms</a></div>
+                    <div><a href="themed.html">Themed Outfits</a></div>
+                </div>
+            </div>
+            <div id="footer3">
+                <b>Get in Touch:</b>
+                <div>
+                   <span>Sitio Ubos,</span> <spam>Poblacion,</spam>
+                    <br>
+                    <span>Brgy. Poblacion,</span> <span>Cebu City</span>
+                    <br>
+                    <span>Philippines, PH 6000</span>
+                    <br><br>
+                    <a href="tel:+639959125513">(+63) 995 912 5513</a>
+                </div>
+            </div>
+            <div id="footer4">Copyright &copy; 2024 Davidson Athletics.</div><!-- Copyright © 2024 Davidson Athletics. -->
+            <div id="footer5">
+                <a href="https://www.facebook.com/people/Davidson-Athletics/100092036303268/"><img src="./images/icons/Facebook_Logo_Secondary.svg"></a>
+                <a href="https://www.facebook.com/messages/t/100623169694339"><img src="./images/icons/M_logo_White.svg"></a>
+                <a href="mailto:baguiojustine69@gmail.com"><img src="./images/icons/mail-outline.svg"></a>
+                <a href="tel:+639959125513"><img src="./images/icons/call-outline.svg"></a>
+            </div>
+        </footer>
+    </body>
+</html>

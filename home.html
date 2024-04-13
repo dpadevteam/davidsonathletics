@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+        <title>Home - Davidson Athletics</title>
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="icon" href="/images/logo1_white.svg" type="image/svg+xml">
+        <link rel="stylesheet" type="text/css" href="./main.css">
+        <link rel="stylesheet" type="text/css" href="./home.css">
+        <link rel="stylesheet" type="text/css" href="./override.css">
+    </head>
+    <body>
+        <header>
+            <nav class="primary-nav">
+                <div class="left-logo">
+                    <a href="home.html">
+                        <img src="./images/logo1_white.svg" alt="Davidson Athletics logo" />
+                        <div class="logo-text">
+                            <div>DAVIDSON</div>
+                            <div>ATHLETICS</div>
+                        </div>
+                    </a>
+                </div>
+                <ul>
+                    <li><a href="#"><img src="./images/icons/home_exterior.png" alt="Home icon" /><span>Home</span></a></li>
+                    <li>
+                        <a href="designs.html"><img src="./images/icons/t_shirt_hanger.png" alt="Designs icon" /><span>Designs</span></a>
+                        <div class="dropdown-content">
+                            <div>
+                                <a href="sportswear.html">Sportswear</a>
+                                <!-- <div><a>Men's Sportswear</a></div>
+                                <div><a>Women's Sportswear</a></div> -->
+                            </div>
+                            <div>
+                                <a href="uniforms.html">Uniforms</a>
+                            </div>
+                            <div>
+                                <a href="themed.html">Themed Outfits</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="about.html"><img src="./images/icons/about_people.png" alt="About Us icon" /><span>About Us</span></a></li>
+                    <li><a href="contact.html"><img src="./images/icons/man_on_phone.png" alt="Contact Us icon" /><span>Contact Us</span></a></li>
+                </ul>
+            </nav>
+        </header>
+        <article>
+            <div class="gray-banner">
+                <div class="gray-banner-shirts">
+                    <img src="./images/assets/gray_banner_san_miguel.png" alt="Purple sleeved volleyball jersey" />
+                    <img src="./images/assets/gray_banner_powerplant.png" alt="White, black, and yellow polo shirt uniform" />
+                    <img src="./images/assets/gray_banner_gis.png" alt="Blue sleeveless basketball jersey" />
+                    <img src="./images/assets/gray_banner_love_angel.png" alt="White 'I love my angel/devil' couple shirts" />
+                </div>
+                <div class="gray-banner-header">
+                    <div>
+                        <div class="gray-banner-main-header">
+                            We'll <span style="font-family: 'Varsity'; text-transform: uppercase;">make</span>,<br>what you <span style="font-family: 'Varsity'; text-transform: uppercase;">want</span>.
+                        </div>
+                        <br>
+                        <div class="gray-banner-sub-header">
+                            Top quality full sublimation
+                        </div>
+                    </div>
+                    <div class="gray-banner-header-order" tabindex="0">
+                        Order Now
+                    </div>
+                </div>
+            </div>
+            <div class="category-cards">
+                <h1>Categories</h1>
+                <div class="category-card-items">
+                    <div class="category-card-item" href="sportswear.html">
+                        <img src="./images/assets/gray_banner_gis.png" alt="Blue sleeveless basketball jersey" />
+                        <div class="category-card-item-text"><a href="sportswear.html">Sportswear</a></div>
+                    </div>
+                    <div class="category-card-item" href="uniforms.html">
+                        <img src="./images/assets/gray_banner_powerplant.png" alt="White, black, and yellow polo shirt uniform" />
+                        <div class="category-card-item-text"><a href="uniforms.html">Uniforms</a></div>
+                    </div>
+                    <div class="category-card-item" href="themed.html">
+                        <img src="./images/assets/gray_banner_love_angel.png" alt="White 'I love my angel/devil' couple shirts" />
+                        <div class="category-card-item-text"><a href="themed.html">Themed Outfits</a></div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                for (let category_card_item of document.querySelectorAll(".category-card-item")) {
+                    category_card_item.addEventListener("click", function() {
+                        window.location = category_card_item.children[1].children[0].href
+                    })
+                }
+            </script>
+            <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+            <div class="elfsight-app-5a6163f3-e9e6-49f3-8830-f3a12503b558" data-elfsight-app-lazy></div>
+            <script type="text/javascript">
+            document.querySelector(".gray-banner-header-order").addEventListener("click", function() {
+                document.querySelector("#__EAAPS_PORTAL > div > div > button").dispatchEvent(new Event('click', {'bubbles': true}));
+            });
+        
+            </script>
+        </article>
+        <footer>
+            <div id="footer1">
+                <b>Quick Links</b>
+                <div>
+                    <div><a href="home.html">Home</a></div>
+                    <div><a href="about.html">About Us</a></div>
+                    <div><a href="about.html#faq-header">FAQ<span style="font-size: 1em; font-variant: all-small-caps;">s<span></a></div>
+                    <div><a href="contact.html">Contact Us</a></div>
+                </div>
+            </div>
+            <div id="footer2">
+                <b><a href="designs.html">Designs</a></b>
+                <div>
+                    <div><a href="sportswear.html">Sportswear</a></div>
+                    <!-- <div style="text-indent: 1em;">Basketball</div> -->
+                    <div><a href="uniforms.html">Uniforms</a></div>
+                    <div><a href="themed.html">Themed Outfits</a></div>
+                </div>
+            </div>
+            <div id="footer3">
+                <b>Get in Touch:</b>
+                <div>
+                   <span>Sitio Ubos,</span> <spam>Poblacion,</spam>
+                    <br>
+                    <span>Brgy. Poblacion,</span> <span>Cebu City</span>
+                    <br>
+                    <span>Philippines, PH 6000</span>
+                    <br><br>
+                    <a href="tel:+639959125513">(+63) 995 912 5513</a>
+                </div>
+            </div>
+            <div id="footer4">Copyright &copy; 2024 Davidson Athletics.</div><!-- Copyright © 2024 Davidson Athletics. -->
+            <div id="footer5">
+                <a href="https://www.facebook.com/people/Davidson-Athletics/100092036303268/"><img src="./images/icons/Facebook_Logo_Secondary.svg"></a>
+                <a href="https://www.facebook.com/messages/t/100623169694339"><img src="./images/icons/M_logo_White.svg"></a>
+                <a href="mailto:baguiojustine69@gmail.com"><img src="./images/icons/mail-outline.svg"></a>
+                <a href="tel:+639959125513"><img src="./images/icons/call-outline.svg"></a>
+            </div>
+        </footer>
+    </body>
+</html>

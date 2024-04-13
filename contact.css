@@ -1,0 +1,168 @@
+article {
+    display: flex;
+    flex-direction: column;
+}
+
+article > * {
+    font-family: "Teko";
+    font-size: 40px;
+}
+
+article > div > div * {
+    font-family: "Teko";
+    font-size: 40px;
+}
+
+article > div.side-by-side {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 10%;
+    gap: 50px;
+}
+article > div.side-by-side > div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 40px;
+}
+article > div.side-by-side > div > div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+article > div.side-by-side > div:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+article > div.side-by-side > div > div:has(> img) {
+    display: flex;
+    justify-content: center;
+}
+
+article > div.side-by-side > div > div > img {
+    max-width:  max(60%, 40vh);
+    filter: brightness(0) invert(1);
+}
+article > div.side-by-side > div > div > iframe {
+    max-width: 100%;
+    border-radius: 40px;
+}
+
+@media screen and (max-width: 860px) {
+    article > div:not(div:first-child) > div {
+        flex-direction: column;
+    }
+    article > div:not(div:first-child) > div:nth-child(odd) {
+        flex-direction: column-reverse;
+    }
+    article > div:not(div:first-child) > div > div {
+        text-align: center;
+    }
+}
+
+article > div#faq {
+    padding: 50px 10%;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 50px;
+}
+
+article > div#faq * {
+    font-family: "Teko";
+    font-size: 40px;
+}
+
+article > div#faq > div > div > input, textarea {
+    border-radius: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+textarea {
+    height: 343px;
+/*    margin-bottom: 0px;*/
+}
+
+button#submit_button, button#modal_close_button {
+    width: fit-content;
+    background: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 5px 20px;
+    margin-top: 10px;
+    transform: scale(1);
+    transition: transform 0.2s ease-out;
+}
+
+button#submit_button:hover, button#modal_close_button:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-out;
+}
+button#submit_button:active, button#modal_close_button:active {
+    transform: scale(0.9);
+    background: gray;
+}
+
+@media screen and (max-width: 1320px) {
+    article > div#faq {
+        flex-direction: column;
+    }
+    article > div#faq > div > div > input, textarea {
+        width: 100%;
+    }
+}
+
+div[class*="FloatingButton__FloatingButtonContainer-"] {
+    z-index: 99999990; /* 99999999 */
+}
+
+#modal {
+    display: flex;
+    position: fixed;
+    background: #33333388;
+    z-index: 99999991;
+    padding: 0;
+    margin: 0;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal h1 {
+    font-family: "College";
+}
+
+#modal * {
+    font-family: "Teko", sans-serif;
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+#modal > div {
+    min-width: max(400px, 30%);
+    padding: 50px 100px;
+    background: black;
+    border: 1px solid gray;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modal > div > img {
+    max-width: 200px;
+}
+
+#modal > div > p {
+    text-align: center;
+}
+
+#modal_close_button {
+    border-radius: 0px !important;
+}
